@@ -1,8 +1,9 @@
 // Create 3 variables to hold the ship's location
 
-let location1 = 3;
-let location2 = 4;
-let location3 = 5;  
+let randomLoc = Math.floor(Math.random() * 5);
+let location1 = randomLoc;
+let location2 = location1 + 1;
+let location3 = location2 + 1;  
 
 // Create 3 variables to hold the user's guess, hits and guesses
 
