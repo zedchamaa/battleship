@@ -13,7 +13,7 @@ const view = {
         const cell = document.getElementById(location);
         cell.setAttribute("class", "miss");
     }
-};
+}
 
 // Create the model object to keep track of the ships, where they are, if they've been hit and if they've been sunk
 
@@ -52,7 +52,7 @@ const model = {
         }
         return true;
     }
-};
+}
 
 // Create the controller object to manage the player's guesses
 
@@ -75,7 +75,7 @@ function parseGuess(guess) {
         }
     }
     return null;
-};
+}
 
 // Get the player's input and execute the game logic
 
@@ -92,13 +92,16 @@ const controller = {
             }
         }
     }
-};
+}
 
 // Getting a player's guess
 
 function init() {
     const fireButton = document.getElementById("fireButton");
     fireButton.onclick = handleFireButton;
+    const guessInput = document.getElementById("guessInput");
+    guessInput.onkeypress = handleKeyPress;
+
 }
 
 function handleFireButton() {
@@ -107,6 +110,14 @@ function handleFireButton() {
     controller.processGuess(guess);
 
     guessInput.value = "";
+}
+
+function handleKeyPress(e) {
+    const fireButton = document.getElementById("fireButton");
+    if (e.keyCode === 13) {
+        fireButton.click();
+        return false;
+    }
 }
 
 window.onload = init;
