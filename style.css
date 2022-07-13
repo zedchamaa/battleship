@@ -15,7 +15,7 @@ div#messageArea {
   top: 0px;
   left: 0px;
   color: rgb(83, 175, 19);
-  font-size: 30PX;
+  font-size: 2rem;
 }
 
 table {
@@ -41,7 +41,7 @@ form {
 form input {
   background-color: rgb(152, 207, 113);
   border-color: rgb(83, 175, 19);
-  font-size: 1em;
+  font-size: 1rem;
 }
 
 .hit {
