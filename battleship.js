@@ -9,11 +9,11 @@ const view = {
         const cell = document.getElementById(location);
         cell.setAttribute("class", "hit");
     },
-    displayMiss: function (location) {
+    displayMiss: function(location) {
         const cell = document.getElementById(location);
         cell.setAttribute("class", "miss");
     }
-}
+};
 
 // Create the model object to keep track of the ships, where they are, if they've been hit and if they've been sunk
 
@@ -52,19 +52,19 @@ const model = {
         }
         return true;
     }
-}
+};
 
 // Create the controller object to manage the player's guesses
 
 function parseGuess(guess) {
-    var alphabet = ["A", "B", "C", "D", "E", "F", "G"];
+    const alphabet = ["A", "B", "C", "D", "E", "F", "G"];
 
     if (guess === null || guess.length !== 2) {
         alert("Oops, please enter a letter and a number on the board.");
     } else {
-        var firstChar = guess.charAt(0);
-        var row = alphabet.indexOf(firstChar); 
-        var column = guess.charAt(1);
+        const firstChar = guess.charAt(0);
+        const row = alphabet.indexOf(firstChar); 
+        const column = guess.charAt(1);
 
         if (isNaN(row) || isNaN(column)) {
             alert("Oops, that isn't on the board.");
@@ -75,4 +75,21 @@ function parseGuess(guess) {
         }
     }
     return null;
-}
+};
+
+// Create the controller object to get the player's input and execute the game logic
+
+const controller = {
+    guesses: 0,
+
+    processGuess: function(guess) {
+        const location = parseGuess(guess);
+        if (location) {
+            this.guesses++;
+            const hit = model.fire(location);
+            if (hit && model.shipsSunk === model.numShips) {
+                view.displayMessage("You sank all my battleships, in " + this.guesses + " guesses");
+            }
+        }
+    }
+};
