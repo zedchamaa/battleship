@@ -77,7 +77,7 @@ function parseGuess(guess) {
     return null;
 };
 
-// Create the controller object to get the player's input and execute the game logic
+// Get the player's input and execute the game logic
 
 const controller = {
     guesses: 0,
@@ -93,3 +93,20 @@ const controller = {
         }
     }
 };
+
+// Getting a player's guess
+
+function init() {
+    const fireButton = document.getElementById("fireButton");
+    fireButton.onclick = handleFireButton;
+}
+
+function handleFireButton() {
+    const guessInput = document.getElementById("guessInput");
+    const guess = guessInput.value;
+    controller.processGuess(guess);
+
+    guessInput.value = "";
+}
+
+window.onload = init;
